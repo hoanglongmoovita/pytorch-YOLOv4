@@ -1,4 +1,5 @@
 import torch.nn as nn
+
 import torch.nn.functional as F
 import numpy as np
 from tool.region_loss import RegionLoss
@@ -56,12 +57,7 @@ class Upsample_expand(nn.Module):
 
     def forward(self, x):
         assert (x.data.dim() == 4)
-        
-        x = x.view(x.size(0), x.size(1), x.size(2), 1, x.size(3), 1).\
-            expand(x.size(0), x.size(1), x.size(2), self.stride, x.size(3), self.stride).contiguous().\
-            view(x.size(0), x.size(1), x.size(2) * self.stride, x.size(3) * self.stride)
-
-        return x
+        return F.interpolate(x, scale_factor=self.stride, mode='nearest')
 
 
 class Upsample_interpolate(nn.Module):

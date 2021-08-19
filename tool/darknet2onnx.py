@@ -27,7 +27,7 @@ def transform_to_onnx(cfgfile, weightfile, batch_size=1):
                           x,
                           onnx_file_name,
                           export_params=True,
-                          opset_version=11,
+                          opset_version=12,
                           do_constant_folding=True,
                           input_names=input_names, output_names=output_names,
                           dynamic_axes=dynamic_axes)
@@ -42,7 +42,7 @@ def transform_to_onnx(cfgfile, weightfile, batch_size=1):
                           x,
                           onnx_file_name,
                           export_params=True,
-                          opset_version=11,
+                          opset_version=12,
                           do_constant_folding=True,
                           input_names=input_names, output_names=output_names,
                           dynamic_axes=None)
