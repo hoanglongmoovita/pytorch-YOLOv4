@@ -20,6 +20,7 @@ def main(cfg_file, weight_file, image_path, batch_size):
         # Transform to onnx as demo
         onnx_path_demo = transform_to_onnx(cfg_file, weight_file, 1)
 
+    print(onnx_path_demo)
     session = onnxruntime.InferenceSession(onnx_path_demo)
     # session = onnx.load(onnx_path)
     print("The model expects input shape: ", session.get_inputs()[0].shape)
